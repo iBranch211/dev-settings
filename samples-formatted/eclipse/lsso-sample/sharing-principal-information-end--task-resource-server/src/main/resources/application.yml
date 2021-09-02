@@ -1,0 +1,8 @@
+server: 
+  port: 8085
+  servlet: 
+    context-path: /lsso-task-resource-server
+    
+spring:
+  jpa:
+    defer-datasource-initialization: true

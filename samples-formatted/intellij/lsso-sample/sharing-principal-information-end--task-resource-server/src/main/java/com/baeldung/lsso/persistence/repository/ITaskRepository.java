@@ -1,8 +1,7 @@
 package com.baeldung.lsso.persistence.repository;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
-
 import com.baeldung.lsso.persistence.model.Task;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface ITaskRepository extends PagingAndSortingRepository<Task, Long> {
 

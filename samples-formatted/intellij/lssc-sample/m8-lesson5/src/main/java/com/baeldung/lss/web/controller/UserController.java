@@ -1,10 +1,10 @@
 package com.baeldung.lss.web.controller;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.validation.Valid;
-
+import com.baeldung.lss.model.User;
+import com.baeldung.lss.persistence.UserRepository;
+import com.baeldung.lss.security.ActiveUserService;
+import com.baeldung.lss.service.IUserService;
+import com.baeldung.lss.validation.EmailExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.baeldung.lss.model.User;
-import com.baeldung.lss.persistence.UserRepository;
-import com.baeldung.lss.security.ActiveUserService;
-import com.baeldung.lss.service.IUserService;
-import com.baeldung.lss.validation.EmailExistsException;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
@@ -39,10 +37,7 @@ class UserController {
 
     @RequestMapping
     public ModelAndView list() {
-        final List<User> users = activeUserService.getActiveUsers()
-            .stream()
-            .map(s -> userService.findUserByEmail(s))
-            .collect(Collectors.toList());
+        final List<User> users = activeUserService.getActiveUsers().stream().map(s -> userService.findUserByEmail(s)).collect(Collectors.toList());
         // final Iterable<User> users = this.userRepository.findAll();
 
         return new ModelAndView("tl/list", "users", users);
@@ -75,8 +70,7 @@ class UserController {
 
     @RequestMapping(value = "delete/{id}")
     public ModelAndView delete(@PathVariable("id") final Long id) {
-        this.userRepository.findById(id)
-            .ifPresent(user -> this.userRepository.delete(user));
+        this.userRepository.findById(id).ifPresent(user -> this.userRepository.delete(user));
         return new ModelAndView("redirect:/");
     }
 

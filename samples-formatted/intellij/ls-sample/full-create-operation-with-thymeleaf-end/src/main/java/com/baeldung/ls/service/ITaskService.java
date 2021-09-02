@@ -1,8 +1,8 @@
 package com.baeldung.ls.service;
 
-import java.util.Optional;
-
 import com.baeldung.ls.persistence.model.Task;
+
+import java.util.Optional;
 
 public interface ITaskService {
     Optional<Task> findById(Long id);

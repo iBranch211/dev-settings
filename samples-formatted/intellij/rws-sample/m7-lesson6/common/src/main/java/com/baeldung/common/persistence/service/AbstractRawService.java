@@ -36,8 +36,7 @@ public abstract class AbstractRawService<T extends IEntity> implements IRawServi
     @Override
     @Transactional(readOnly = true)
     public T findOne(final long id) {
-        return getDao().findById(id)
-            .orElse(null);
+        return getDao().findById(id).orElse(null);
     }
 
     // find - all
@@ -59,8 +58,7 @@ public abstract class AbstractRawService<T extends IEntity> implements IRawServi
     @Transactional(readOnly = true)
     public List<T> findAllPaginatedAndSorted(final int page, final int size, final String sortBy, final String sortOrder) {
         final Sort sortInfo = constructSort(sortBy, sortOrder);
-        final List<T> content = getDao().findAll(PageRequest.of(page, size, sortInfo))
-            .getContent();
+        final List<T> content = getDao().findAll(PageRequest.of(page, size, sortInfo)).getContent();
         if (content == null) {
             return Lists.newArrayList();
         }
@@ -76,8 +74,7 @@ public abstract class AbstractRawService<T extends IEntity> implements IRawServi
     @Override
     @Transactional(readOnly = true)
     public List<T> findAllPaginated(final int page, final int size) {
-        final List<T> content = getDao().findAll(PageRequest.of(page, size, null))
-            .getContent();
+        final List<T> content = getDao().findAll(PageRequest.of(page, size, null)).getContent();
         if (content == null) {
             return Lists.newArrayList();
         }

@@ -1,9 +1,9 @@
 package com.baeldung.lsd;
 
-import java.util.Optional;
-
-import javax.transaction.Transactional;
-
+import com.baeldung.lsd.persistence.model.Task;
+import com.baeldung.lsd.persistence.model.TaskStatus;
+import com.baeldung.lsd.persistence.repository.TaskRepository;
+import com.baeldung.lsd.persistence.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +12,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.baeldung.lsd.persistence.model.Task;
-import com.baeldung.lsd.persistence.model.TaskStatus;
-import com.baeldung.lsd.persistence.repository.TaskRepository;
-import com.baeldung.lsd.persistence.repository.UserRepository;
+import javax.transaction.Transactional;
+import java.util.Optional;
 
 @SpringBootApplication
 public class ModifyingQueriesApp implements ApplicationRunner {

@@ -1,9 +1,12 @@
 package com.baeldung.um.web.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.baeldung.common.util.QueryConstants;
+import com.baeldung.common.web.controller.AbstractController;
+import com.baeldung.common.web.controller.ISortingController;
+import com.baeldung.um.persistence.model.Privilege;
+import com.baeldung.um.service.IPrivilegeService;
+import com.baeldung.um.util.UmMappings;
+import com.baeldung.um.web.dto.PrivilegeDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,23 +21,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.common.util.QueryConstants;
-import com.baeldung.common.web.controller.AbstractController;
-import com.baeldung.common.web.controller.ISortingController;
-import com.baeldung.um.persistence.model.Privilege;
-import com.baeldung.um.service.IPrivilegeService;
-import com.baeldung.um.util.UmMappings;
-import com.baeldung.um.web.dto.PrivilegeDto;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping(UmMappings.PRIVILEGES)
 public class PrivilegeController extends AbstractController<PrivilegeDto, Privilege> implements ISortingController<PrivilegeDto> {
 
     @Autowired
-    private IPrivilegeService service;
-
-    @Autowired
     protected ModelMapper modelmapper;
+    @Autowired
+    private IPrivilegeService service;
 
     public PrivilegeController() {
         super(PrivilegeDto.class);

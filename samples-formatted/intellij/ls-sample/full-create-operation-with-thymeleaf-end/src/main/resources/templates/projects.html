@@ -2,31 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
-<title>Projects</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Projects</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet">
 
 </head>
 <body>
-	<table class="table col-md-6 ml-3">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Name</th>
-				<th>Date Created</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="project : ${projects}">
-				<td th:text="${project.id}"></td>
-				<td th:text="${project.name}"></td>
-				<td th:text="${project.dateCreated}"></td>
-			</tr>
-		</tbody>
-	</table>
+<table class="table col-md-6 ml-3">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Date Created</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="project : ${projects}">
+        <td th:text="${project.id}"></td>
+        <td th:text="${project.name}"></td>
+        <td th:text="${project.dateCreated}"></td>
+    </tr>
+    </tbody>
+</table>
 
-	<p>
-		<a th:href="@{/projects/new}" class="btn btn-link">New Project</a>
-	</p>
+<p>
+    <a class="btn btn-link" th:href="@{/projects/new}">New Project</a>
+</p>
 </body>
 </html>

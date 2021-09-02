@@ -1,10 +1,8 @@
 package com.baeldung.lsso.web.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-
+import com.baeldung.lsso.persistence.model.Project;
+import com.baeldung.lsso.service.IProjectService;
+import com.baeldung.lsso.web.dto.ProjectDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,9 +14,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.baeldung.lsso.persistence.model.Project;
-import com.baeldung.lsso.service.IProjectService;
-import com.baeldung.lsso.web.dto.ProjectDto;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(value = "/api/projects")
@@ -32,8 +31,7 @@ public class ProjectController {
 
     @GetMapping(value = "/{id}")
     public ProjectDto findOne(@PathVariable Long id) {
-        Project entity = projectService.findById(id)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Project entity = projectService.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return convertToDto(entity);
     }
 

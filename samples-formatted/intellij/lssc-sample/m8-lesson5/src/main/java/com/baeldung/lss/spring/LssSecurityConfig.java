@@ -1,7 +1,7 @@
 package com.baeldung.lss.spring;
 
-import javax.annotation.PostConstruct;
-
+import com.baeldung.lss.model.User;
+import com.baeldung.lss.persistence.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -17,8 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 
-import com.baeldung.lss.model.User;
-import com.baeldung.lss.persistence.UserRepository;
+import javax.annotation.PostConstruct;
 
 @EnableWebSecurity
 @Configuration
@@ -36,6 +35,11 @@ public class LssSecurityConfig extends WebSecurityConfigurerAdapter {
 
     //
 
+    @Bean
+    public static ServletListenerRegistrationBean httpSessionEventPublisher() { // (5)
+        return new ServletListenerRegistrationBean(new HttpSessionEventPublisher());
+    }
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {// @formatter:off
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
@@ -52,10 +56,10 @@ public class LssSecurityConfig extends WebSecurityConfigurerAdapter {
         .formLogin().
             loginPage("/login").permitAll().
             loginProcessingUrl("/doLogin")
-        
+
         .and()
         .logout().permitAll().logoutUrl("/logout")
-        
+
         .and().sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry()).and().sessionFixation().none()
 
         .and()
@@ -79,10 +83,5 @@ public class LssSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public static ServletListenerRegistrationBean httpSessionEventPublisher() { // (5)
-        return new ServletListenerRegistrationBean(new HttpSessionEventPublisher());
     }
 }

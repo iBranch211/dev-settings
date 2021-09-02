@@ -16,6 +16,10 @@ public final class Um {
 
     // privileges
 
+    private Um() {
+        throw new AssertionError();
+    }
+
     public static final class Privileges {
 
         // User
@@ -39,10 +43,6 @@ public final class Um {
         /** A placeholder role for enduser. */
         public static final String ROLE_ENDUSER = "ROLE_ENDUSER";
 
-    }
-
-    private Um() {
-        throw new AssertionError();
     }
 
 }

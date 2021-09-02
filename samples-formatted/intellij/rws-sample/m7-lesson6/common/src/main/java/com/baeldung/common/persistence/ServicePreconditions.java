@@ -13,7 +13,7 @@ public final class ServicePreconditions {
 
     /**
      * Ensures that the entity reference passed as a parameter to the calling method is not null.
-     * 
+     *
      * @param entity
      *            an object reference
      * @return the non-null reference that was validated

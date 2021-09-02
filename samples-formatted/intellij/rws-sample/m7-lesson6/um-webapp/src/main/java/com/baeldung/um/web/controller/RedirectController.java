@@ -1,14 +1,13 @@
 package com.baeldung.um.web.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
+import com.baeldung.um.util.UmMappings;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.um.util.UmMappings;
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class RedirectController {
@@ -31,8 +30,7 @@ public class RedirectController {
     // util
 
     private ResponseEntity<Void> singularToPlural(HttpServletRequest request) {
-        String correctUri = request.getRequestURL()
-            .toString() + "s";
+        String correctUri = request.getRequestURL().toString() + "s";
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add(HttpHeaders.LOCATION, correctUri);
 

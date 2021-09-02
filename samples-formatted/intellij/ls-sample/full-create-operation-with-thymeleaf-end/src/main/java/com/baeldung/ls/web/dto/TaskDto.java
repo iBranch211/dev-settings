@@ -1,10 +1,9 @@
 package com.baeldung.ls.web.dto;
 
-import java.time.LocalDate;
-
+import com.baeldung.ls.persistence.model.TaskStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.baeldung.ls.persistence.model.TaskStatus;
+import java.time.LocalDate;
 
 public class TaskDto {
     private Long id;

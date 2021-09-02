@@ -1,16 +1,15 @@
 package com.baeldung.lsso.web.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
+import com.baeldung.lsso.persistence.model.Task;
+import com.baeldung.lsso.service.ITaskService;
+import com.baeldung.lsso.web.dto.TaskDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.lsso.persistence.model.Task;
-import com.baeldung.lsso.service.ITaskService;
-import com.baeldung.lsso.web.dto.TaskDto;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @RestController
 @RequestMapping(value = "/api/tasks")

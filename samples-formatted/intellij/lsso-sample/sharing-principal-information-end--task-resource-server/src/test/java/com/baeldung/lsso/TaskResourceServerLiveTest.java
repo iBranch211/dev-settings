@@ -1,11 +1,10 @@
 package com.baeldung.lsso;
 
-import static org.hamcrest.Matchers.greaterThan;
-
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
-import io.restassured.RestAssured;
+import static org.hamcrest.Matchers.greaterThan;
 
 /**
  * This Live Test requires:
@@ -19,49 +18,26 @@ public class TaskResourceServerLiveTest {
 
     @Test
     public void givenRequestWithPreAuthHeaders_whenRequestProjectsEndpoint_thenOk() throws Exception {
-        RestAssured.given()
-            .header("BAEL-username", "customUsername")
-            .header("BAEL-authorities", "SCOPE_read")
-            .get(PROJECT_RESOURCE_URL + "?projectId=1")
-            .then()
-            .statusCode(HttpStatus.OK.value())
-            .and()
-            .body("size()", greaterThan(0));
+        RestAssured.given().header("BAEL-username", "customUsername").header("BAEL-authorities", "SCOPE_read").get(PROJECT_RESOURCE_URL + "?projectId=1").then().statusCode(HttpStatus.OK.value()).and().body("size()", greaterThan(0));
     }
 
     @Test
     public void givenRequestWithoutQueryParam_whenRequestProjectsEndpoint_thenBadRequest() throws Exception {
-        RestAssured.given()
-            .header("BAEL-username", "customUsername")
-            .header("BAEL-authorities", "SCOPE_read")
-            .get(PROJECT_RESOURCE_URL)
-            .then()
-            .statusCode(HttpStatus.BAD_REQUEST.value());
+        RestAssured.given().header("BAEL-username", "customUsername").header("BAEL-authorities", "SCOPE_read").get(PROJECT_RESOURCE_URL).then().statusCode(HttpStatus.BAD_REQUEST.value());
     }
 
     @Test
     public void givenJustUsernameHeaders_whenRequestProjectsEndpoint_thenForbidden() throws Exception {
-        RestAssured.given()
-            .header("BAEL-username", "customUsername")
-            .get(PROJECT_RESOURCE_URL)
-            .then()
-            .statusCode(HttpStatus.FORBIDDEN.value());
+        RestAssured.given().header("BAEL-username", "customUsername").get(PROJECT_RESOURCE_URL).then().statusCode(HttpStatus.FORBIDDEN.value());
     }
 
     @Test
     public void givenJustUsernameHeaders_whenRequestNonExistingEndpoint_thenNotFound() throws Exception {
-        RestAssured.given()
-            .header("BAEL-username", "customUsername")
-            .get(TASK_RESOURCE_SERVER_BASE_URL + "/other")
-            .then()
-            .statusCode(HttpStatus.NOT_FOUND.value());
+        RestAssured.given().header("BAEL-username", "customUsername").get(TASK_RESOURCE_SERVER_BASE_URL + "/other").then().statusCode(HttpStatus.NOT_FOUND.value());
     }
 
     @Test
     public void givenNoHeaders_whenRequestProjectsEndpoint_thenPreAuthCredentialsNotFoundException() throws Exception {
-        RestAssured.given()
-            .get(PROJECT_RESOURCE_URL)
-            .then()
-            .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        RestAssured.given().get(PROJECT_RESOURCE_URL).then().statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
     }
 }

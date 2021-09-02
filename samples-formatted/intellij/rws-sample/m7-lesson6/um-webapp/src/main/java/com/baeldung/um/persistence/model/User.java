@@ -1,6 +1,8 @@
 package com.baeldung.um.persistence.model;
 
-import java.util.Set;
+import com.baeldung.common.interfaces.INameableDto;
+import com.baeldung.common.persistence.model.INameableEntity;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,11 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import com.baeldung.common.interfaces.INameableDto;
-import com.baeldung.common.persistence.model.INameableEntity;
+import java.util.Set;
 
 @Entity
 public class User implements INameableEntity, INameableDto {
@@ -129,9 +127,7 @@ public class User implements INameableEntity, INameableDto {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("id", id)
-            .append("name", name)
-            .toString();
+        return new ToStringBuilder(this).append("id", id).append("name", name).toString();
     }
 
 }

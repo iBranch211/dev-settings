@@ -1,15 +1,14 @@
 package com.baeldung.lsd.persistence.model;
 
-import java.time.LocalDate;
-import java.util.Objects;
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.time.LocalDate;
+import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 public class Task {
@@ -18,8 +17,7 @@ public class Task {
     private Long id;
 
     @Column(unique = true, nullable = false, updatable = false)
-    private String uuid = UUID.randomUUID()
-        .toString();
+    private String uuid = UUID.randomUUID().toString();
 
     private String name;
 

@@ -1,14 +1,13 @@
 package com.baeldung.lsso.service.impl;
 
-import java.time.LocalDate;
-import java.util.Objects;
-import java.util.Optional;
-
-import org.springframework.stereotype.Service;
-
 import com.baeldung.lsso.persistence.model.Project;
 import com.baeldung.lsso.persistence.repository.IProjectRepository;
 import com.baeldung.lsso.service.IProjectService;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class ProjectServiceImpl implements IProjectService {

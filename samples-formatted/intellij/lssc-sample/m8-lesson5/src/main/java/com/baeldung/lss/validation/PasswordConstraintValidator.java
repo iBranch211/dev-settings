@@ -1,9 +1,5 @@
 package com.baeldung.lss.validation;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-import java.util.Arrays;
-
 import com.google.common.base.Joiner;
 import org.passay.DigitCharacterRule;
 import org.passay.LengthRule;
@@ -13,6 +9,10 @@ import org.passay.RuleResult;
 import org.passay.SpecialCharacterRule;
 import org.passay.UppercaseCharacterRule;
 import org.passay.WhitespaceRule;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+import java.util.Arrays;
 
 public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {
 
@@ -28,9 +28,7 @@ public class PasswordConstraintValidator implements ConstraintValidator<ValidPas
             return true;
         }
         context.disableDefaultConstraintViolation();
-        context.buildConstraintViolationWithTemplate(Joiner.on("\n")
-            .join(validator.getMessages(result)))
-            .addConstraintViolation();
+        context.buildConstraintViolationWithTemplate(Joiner.on("\n").join(validator.getMessages(result))).addConstraintViolation();
         return false;
     }
 

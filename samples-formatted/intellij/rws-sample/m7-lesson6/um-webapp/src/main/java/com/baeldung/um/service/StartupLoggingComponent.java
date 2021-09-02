@@ -1,7 +1,6 @@
 package com.baeldung.um.service;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -9,16 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-import com.google.common.collect.Lists;
+import java.util.List;
 
 @Component
 public class StartupLoggingComponent implements InitializingBean {
-    private final Logger logger = LoggerFactory.getLogger(getClass());
-
     private static final String ENV_TARGET_KEY = "envTarget";
     private static final String PERSISTENCE_TARGET_KEY = "persistenceTarget";
     private static final String PERSISTENCE_HOST_KEY = "jdbc.url";
-
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private Environment env;
 

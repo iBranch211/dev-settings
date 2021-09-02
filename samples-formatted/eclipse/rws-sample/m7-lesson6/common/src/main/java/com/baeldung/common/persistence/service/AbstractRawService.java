@@ -120,7 +120,8 @@ public abstract class AbstractRawService<T extends IEntity> implements IRawServi
 
     @Override
     public void delete(final long id) {
-        final T entity = getDao().findById(id).orElseThrow(MyEntityNotFoundException::new);
+        final T entity = getDao().findById(id)
+            .orElseThrow(MyEntityNotFoundException::new);
 
         getDao().delete(entity);
     }

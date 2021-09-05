@@ -35,7 +35,7 @@ public class ProjectResourceServerIntegrationTest {
         String newProject = "{ \"name\": \"newProject\" }";
 
         this.mvc.perform(post(PROJECT_SVC_ENDPOINT_URL).header("BAEL-username", "customUsername").header("BAEL-authorities", "SCOPE_write").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).content(newProject))
-            .andExpect(status().isCreated());
+          .andExpect(status().isCreated());
     }
 
     @Test

@@ -73,16 +73,16 @@ public class GatewayIntegrationTest {
         String tasksQueryParamsSection = "?projectId=1";
 
         this.webTestClient.mutateWith(mockJwt().jwt(jwt -> jwt.claim("scope", "read write custom").subject("customSubjectId")))
-            .get()
-            .uri(BASE_GATEWAY_URL_PATH + "/tasks" + tasksQueryParamsSection)
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectBody()
-            .consumeWith(response -> {
-                String bodyAsString = new String(response.getResponseBodyContent());
-                assertThat(bodyAsString).contains("Task 1").doesNotContain("Task 2");
-            });
+          .get()
+          .uri(BASE_GATEWAY_URL_PATH + "/tasks" + tasksQueryParamsSection)
+          .exchange()
+          .expectStatus()
+          .isOk()
+          .expectBody()
+          .consumeWith(response -> {
+              String bodyAsString = new String(response.getResponseBodyContent());
+              assertThat(bodyAsString).contains("Task 1").doesNotContain("Task 2");
+          });
 
         RecordedRequest capturedTaskRequest = taskResourceServer.takeRequest();
         assertThat(capturedTaskRequest.getMethod()).isEqualTo(HttpMethod.GET.name());

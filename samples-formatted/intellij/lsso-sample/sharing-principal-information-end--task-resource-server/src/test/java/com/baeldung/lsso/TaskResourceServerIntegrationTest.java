@@ -27,8 +27,8 @@ public class TaskResourceServerIntegrationTest {
     @Test
     public void givenRequestWithPreAuthHeaders_whenRequestProjectsEndpoint_thenOk() throws Exception {
         this.mvc.perform(get(TASKS_SVC_ENDPOINT_URL + "?projectId=1").header("BAEL-username", "customUsername").header("BAEL-authorities", "SCOPE_read").accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.size()", Matchers.greaterThan(0)));
+          .andExpect(status().isOk())
+          .andExpect(jsonPath("$.size()", Matchers.greaterThan(0)));
     }
 
     @Test

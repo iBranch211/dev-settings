@@ -120,14 +120,14 @@ public class Oauth2ClientIntegrationTest {
         // send request to redirect_uri with code and state
         String code = "123";
         result = this.webTestClient.get()
-            .uri(String.format(REDIRECT_URI, state, code))
-            .cookie("JSESSIONID", cookieSession)
-            .exchange()
-            .expectStatus()
-            .isFound()
-            .expectHeader()
-            .value(HttpHeaders.LOCATION, endsWith(CLIENT_SECURED_PROJECTS_URL))
-            .returnResult(Void.class);
+          .uri(String.format(REDIRECT_URI, state, code))
+          .cookie("JSESSIONID", cookieSession)
+          .exchange()
+          .expectStatus()
+          .isFound()
+          .expectHeader()
+          .value(HttpHeaders.LOCATION, endsWith(CLIENT_SECURED_PROJECTS_URL))
+          .returnResult(Void.class);
 
         // assert that Access Token Endpoint was requested as expected
         RecordedRequest capturedTokenRequest = authServer.takeRequest();
@@ -176,15 +176,15 @@ public class Oauth2ClientIntegrationTest {
         gatewayServer.enqueue(new MockResponse().setResponseCode(HttpStatus.CREATED.value()));
 
         this.webTestClient.post()
-            .uri(CLIENT_SECURED_PROJECTS_URL)
-            .cookie("JSESSIONID", newCookieSession)
-            .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-            .body(BodyInserters.fromFormData("name", "newProjectName").with("_csrf", csrfToken.get()))
-            .exchange()
-            .expectStatus()
-            .isFound()
-            .expectHeader()
-            .value(HttpHeaders.LOCATION, containsString("lsso-client/projects"));
+          .uri(CLIENT_SECURED_PROJECTS_URL)
+          .cookie("JSESSIONID", newCookieSession)
+          .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+          .body(BodyInserters.fromFormData("name", "newProjectName").with("_csrf", csrfToken.get()))
+          .exchange()
+          .expectStatus()
+          .isFound()
+          .expectHeader()
+          .value(HttpHeaders.LOCATION, containsString("lsso-client/projects"));
 
         RecordedRequest capturedAddProjectRequest = gatewayServer.takeRequest();
         assertThat(capturedAddProjectRequest.getMethod()).isEqualTo(HttpMethod.POST.name());

@@ -31,9 +31,10 @@ import com.baeldung.um.web.dto.PrivilegeDto;
 public class PrivilegeController extends AbstractController<PrivilegeDto, Privilege> implements ISortingController<PrivilegeDto> {
 
     @Autowired
-    protected ModelMapper modelmapper;
-    @Autowired
     private IPrivilegeService service;
+
+    @Autowired
+    protected ModelMapper modelmapper;
 
     public PrivilegeController() {
         super(PrivilegeDto.class);
@@ -46,7 +47,7 @@ public class PrivilegeController extends AbstractController<PrivilegeDto, Privil
     @Override
     @GetMapping(params = { QueryConstants.PAGE, QueryConstants.SIZE, QueryConstants.SORT_BY })
     public List<PrivilegeDto> findAllPaginatedAndSorted(@RequestParam(value = QueryConstants.PAGE) final int page, @RequestParam(value = QueryConstants.SIZE) final int size, @RequestParam(value = QueryConstants.SORT_BY) final String sortBy,
-      @RequestParam(value = QueryConstants.SORT_ORDER) final String sortOrder) {
+        @RequestParam(value = QueryConstants.SORT_ORDER) final String sortOrder) {
         return findPaginatedAndSortedInternal(page, size, sortBy, sortOrder);
     }
 

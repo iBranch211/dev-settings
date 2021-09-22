@@ -13,10 +13,12 @@ import com.google.common.collect.Lists;
 
 @Component
 public class StartupLoggingComponent implements InitializingBean {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
     private static final String ENV_TARGET_KEY = "envTarget";
     private static final String PERSISTENCE_TARGET_KEY = "persistenceTarget";
     private static final String PERSISTENCE_HOST_KEY = "jdbc.url";
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+
     @Autowired
     private Environment env;
 

@@ -28,10 +28,13 @@ public class GatewayIntegrationTest {
     private static final String BASE_GATEWAY_URL_PATH = "/lsso-gateway";
     private static final String TASK_SVC_ENDPOINT_URL = "/lsso-task-resource-server/api/tasks";
     private static final String PROJECT_SVC_ENDPOINT_URL = "/lsso-project-resource-server/api/projects";
-    MockWebServer projectResourceServer = new MockWebServer();
-    MockWebServer taskResourceServer = new MockWebServer();
+
     @Autowired
     private WebTestClient webTestClient;
+
+    MockWebServer projectResourceServer = new MockWebServer();
+
+    MockWebServer taskResourceServer = new MockWebServer();
 
     @BeforeEach
     public void setUp() throws Exception {

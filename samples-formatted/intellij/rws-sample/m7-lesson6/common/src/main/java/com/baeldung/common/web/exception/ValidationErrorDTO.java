@@ -28,8 +28,8 @@ public class ValidationErrorDTO {
     public final String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append("ValidationErrorDTO [fieldErrors=")
-          .append(fieldErrors)
-          .append("]");
+            .append(fieldErrors)
+            .append("]");
         return builder.toString();
     }
 

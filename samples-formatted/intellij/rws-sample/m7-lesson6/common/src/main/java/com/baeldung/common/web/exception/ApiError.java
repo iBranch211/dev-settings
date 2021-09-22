@@ -44,12 +44,12 @@ public class ApiError {
     public final String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append("ApiError [status=")
-          .append(status)
-          .append(", message=")
-          .append(message)
-          .append(", developerMessage=")
-          .append(developerMessage)
-          .append("]");
+            .append(status)
+            .append(", message=")
+            .append(message)
+            .append(", developerMessage=")
+            .append(developerMessage)
+            .append("]");
         return builder.toString();
     }
 

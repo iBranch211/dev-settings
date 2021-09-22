@@ -36,11 +36,6 @@ public class LssSecurityConfig extends WebSecurityConfigurerAdapter {
 
     //
 
-    @Bean
-    public static ServletListenerRegistrationBean httpSessionEventPublisher() { // (5)
-        return new ServletListenerRegistrationBean(new HttpSessionEventPublisher());
-    }
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {// @formatter:off
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
@@ -57,10 +52,10 @@ public class LssSecurityConfig extends WebSecurityConfigurerAdapter {
         .formLogin().
             loginPage("/login").permitAll().
             loginProcessingUrl("/doLogin")
-
+        
         .and()
         .logout().permitAll().logoutUrl("/logout")
-
+        
         .and().sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry()).and().sessionFixation().none()
 
         .and()
@@ -84,5 +79,10 @@ public class LssSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public static ServletListenerRegistrationBean httpSessionEventPublisher() { // (5)
+        return new ServletListenerRegistrationBean(new HttpSessionEventPublisher());
     }
 }

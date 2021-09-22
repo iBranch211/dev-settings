@@ -23,6 +23,12 @@ public class EmbeddedKeycloakApplication extends KeycloakApplication {
 
     static KeycloakServerProperties keycloakServerProperties;
 
+    protected void loadConfig() {
+        JsonConfigProviderFactory factory = new RegularJsonConfigProviderFactory();
+        Config.init(factory.create()
+            .orElseThrow(() -> new NoSuchElementException("No value present")));
+    }
+
     public EmbeddedKeycloakApplication() {
 
         super();
@@ -30,12 +36,6 @@ public class EmbeddedKeycloakApplication extends KeycloakApplication {
         createMasterRealmAdminUser();
 
         createBaeldungRealm();
-    }
-
-    protected void loadConfig() {
-        JsonConfigProviderFactory factory = new RegularJsonConfigProviderFactory();
-        Config.init(factory.create()
-            .orElseThrow(() -> new NoSuchElementException("No value present")));
     }
 
     private void createMasterRealmAdminUser() {

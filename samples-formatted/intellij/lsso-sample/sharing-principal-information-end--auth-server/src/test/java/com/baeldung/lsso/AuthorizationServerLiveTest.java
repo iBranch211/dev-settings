@@ -43,33 +43,33 @@ public class AuthorizationServerLiveTest {
         final String oidcDiscoveryUrl = AUTH_SERVER_BASE_URL + "/.well-known/openid-configuration";
 
         Response response = RestAssured.given()
-          .redirects()
-          .follow(false)
-          .get(oidcDiscoveryUrl);
+            .redirects()
+            .follow(false)
+            .get(oidcDiscoveryUrl);
 
         assertThat(HttpStatus.OK.value()).isEqualTo(response.getStatusCode());
         System.out.println(response.asString());
         assertThat(response.jsonPath()
-          .getMap("$.")).containsKeys("issuer", "authorization_endpoint", "token_endpoint", "userinfo_endpoint");
+            .getMap("$.")).containsKeys("issuer", "authorization_endpoint", "token_endpoint", "userinfo_endpoint");
     }
 
     private String obtainAccessToken() {
         // obtain authentication url with custom codes
         Response response = RestAssured.given()
-          .redirects()
-          .follow(false)
-          .get(AUTHORIZE_URL);
+            .redirects()
+            .follow(false)
+            .get(AUTHORIZE_URL);
         String authSessionId = response.getCookie("AUTH_SESSION_ID");
         String kcPostAuthenticationUrl = response.asString()
-          .split("action=\"")[1].split("\"")[0].replace("&amp;", "&");
+            .split("action=\"")[1].split("\"")[0].replace("&amp;", "&");
 
         // obtain authentication code and state
         response = RestAssured.given()
-          .redirects()
-          .follow(false)
-          .cookie("AUTH_SESSION_ID", authSessionId)
-          .formParams("username", USERNAME, "password", PASSWORD, "credentialId", "")
-          .post(kcPostAuthenticationUrl);
+            .redirects()
+            .follow(false)
+            .cookie("AUTH_SESSION_ID", authSessionId)
+            .formParams("username", USERNAME, "password", PASSWORD, "credentialId", "")
+            .post(kcPostAuthenticationUrl);
         assertThat(HttpStatus.FOUND.value()).isEqualTo(response.getStatusCode());
 
         // extract authorization code
@@ -84,10 +84,10 @@ public class AuthorizationServerLiveTest {
         params.put("redirect_uri", REDIRECT_URL);
         params.put("client_secret", CLIENT_SECRET);
         response = RestAssured.given()
-          .formParams(params)
-          .post(TOKEN_URL);
+            .formParams(params)
+            .post(TOKEN_URL);
         return response.jsonPath()
-          .getString("access_token");
+            .getString("access_token");
     }
 
 }

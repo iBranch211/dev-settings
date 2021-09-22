@@ -24,11 +24,11 @@ public final class RestUtil {
      */
     public static void propagateStatusCodeOnCreate(final ResponseEntity<?> createResponse, final String message) {
         if (createResponse.getStatusCode()
-          .value() == 409) {
+            .value() == 409) {
             throw new MyConflictException(message);
         }
         if (createResponse.getStatusCode()
-          .value() != 201) {
+            .value() != 201) {
             throw new IllegalStateException(message);
         }
     }
@@ -43,7 +43,7 @@ public final class RestUtil {
      */
     public static void propagateStatusCodeOnException(final HttpStatusCodeException ex, final String message) {
         if (ex.getStatusCode()
-          .value() == 409) {
+            .value() == 409) {
             throw new ValidationException(ex.getStatusText());
         }
 

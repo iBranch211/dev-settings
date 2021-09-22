@@ -43,20 +43,28 @@ public class Oauth2ClientIntegrationTest {
     private static final String CLIENT_SECURED_ADD_PROJECT_URL = "/addproject";
     private static final String CLIENT_SECURED_TASKS_URL = "/tasks";
     private static final String REDIRECT_URI = "/login/oauth2/code/custom?state=%s&code=%s";
-    MockWebServer authServer;
-    MockWebServer gatewayServer;
+
     @Value("${spring.security.oauth2.client.provider.custom.authorization-uri}")
     private String authServerAuthorizationURL;
+
     @Value("${spring.security.oauth2.client.registration.custom.redirect-uri}")
     private String configuredRedirectUri;
+
     @Value("${spring.security.oauth2.client.provider.custom.token-uri}")
     private String configuredTokenUri;
+
     @Value("${spring.security.oauth2.client.provider.custom.user-info-uri}")
     private String configuredUserInfoUri;
+
     @Value("${gateway.url}")
     private String gatewayBaseUrl;
+
     @Autowired
     private WebTestClient webTestClient;
+
+    MockWebServer authServer;
+
+    MockWebServer gatewayServer;
 
     @BeforeEach
     public void setUp() throws Exception {

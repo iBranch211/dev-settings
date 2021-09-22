@@ -10,8 +10,8 @@ public class UmApp {
 
     public static void main(final String... args) {
         new SpringApplicationBuilder(UmApp.class).initializers(new MyApplicationContextInitializer())
-          .listeners()
-          .run(args);
+            .listeners()
+            .run(args);
     }
 
 }

@@ -1,7 +1,6 @@
 package com.baeldung.um.persistence.model;
 
-import com.baeldung.common.interfaces.INameableDto;
-import com.baeldung.common.persistence.model.INameableEntity;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,8 @@ import javax.persistence.ManyToMany;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.Set;
+import com.baeldung.common.interfaces.INameableDto;
+import com.baeldung.common.persistence.model.INameableEntity;
 
 @Entity
 public class Role implements INameableEntity, INameableDto {

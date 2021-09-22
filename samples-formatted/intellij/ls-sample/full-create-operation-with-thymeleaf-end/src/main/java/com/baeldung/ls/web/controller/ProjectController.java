@@ -54,9 +54,9 @@ public class ProjectController {
     protected ProjectDto convertToDto(Project entity) {
         ProjectDto dto = new ProjectDto(entity.getId(), entity.getName(), entity.getDateCreated());
         dto.setTasks(entity.getTasks()
-          .stream()
-          .map(t -> convertTaskToDto(t))
-          .collect(Collectors.toSet()));
+            .stream()
+            .map(t -> convertTaskToDto(t))
+            .collect(Collectors.toSet()));
         return dto;
     }
 

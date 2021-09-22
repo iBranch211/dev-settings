@@ -1,11 +1,11 @@
 package com.baeldung.um.util;
 
-import com.baeldung.um.persistence.model.Privilege;
-import com.baeldung.um.persistence.model.Role;
-
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import com.baeldung.um.persistence.model.Privilege;
+import com.baeldung.um.persistence.model.Role;
 
 public final class UmConvertionUtil {
 

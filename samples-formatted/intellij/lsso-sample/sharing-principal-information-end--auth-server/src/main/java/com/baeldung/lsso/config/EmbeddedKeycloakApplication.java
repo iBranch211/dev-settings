@@ -1,6 +1,7 @@
 package com.baeldung.lsso.config;
 
-import com.baeldung.lsso.config.KeycloakServerProperties.AdminUser;
+import java.util.NoSuchElementException;
+
 import org.keycloak.Config;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.representations.idm.RealmRepresentation;
@@ -14,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import java.util.NoSuchElementException;
+import com.baeldung.lsso.config.KeycloakServerProperties.AdminUser;
 
 public class EmbeddedKeycloakApplication extends KeycloakApplication {
 

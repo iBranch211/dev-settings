@@ -1,6 +1,8 @@
 package com.baeldung.um.spring;
 
-import com.fasterxml.jackson.databind.SerializationFeature;
+import java.util.List;
+import java.util.Optional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,8 +14,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.List;
-import java.util.Optional;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 @Configuration
 @ComponentScan({ "com.baeldung.common.web", "com.baeldung.um.web" })

@@ -1,8 +1,9 @@
 package com.baeldung.common.persistence.service;
 
+import org.springframework.data.domain.Page;
+
 import com.baeldung.common.interfaces.IOperations;
 import com.baeldung.common.persistence.model.IEntity;
-import org.springframework.data.domain.Page;
 
 public interface IRawService<T extends IEntity> extends IOperations<T> {
 

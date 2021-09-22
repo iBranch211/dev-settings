@@ -1,9 +1,10 @@
 package com.baeldung.common.web.controller;
 
-import com.baeldung.common.interfaces.IDto;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+
+import com.baeldung.common.interfaces.IDto;
 
 public interface ISortingController<D extends IDto> {
 

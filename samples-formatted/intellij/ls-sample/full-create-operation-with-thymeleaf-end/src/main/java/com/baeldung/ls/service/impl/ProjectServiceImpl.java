@@ -1,13 +1,14 @@
 package com.baeldung.ls.service.impl;
 
-import com.baeldung.ls.persistence.model.Project;
-import com.baeldung.ls.persistence.repository.IProjectRepository;
-import com.baeldung.ls.service.IProjectService;
+import java.time.LocalDate;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.time.LocalDate;
-import java.util.Optional;
+import com.baeldung.ls.persistence.model.Project;
+import com.baeldung.ls.persistence.repository.IProjectRepository;
+import com.baeldung.ls.service.IProjectService;
 
 @Service
 public class ProjectServiceImpl implements IProjectService {

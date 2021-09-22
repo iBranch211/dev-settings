@@ -1,8 +1,9 @@
 package com.baeldung.um.spring;
 
-import com.baeldung.um.persistence.setup.MyApplicationContextInitializer;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+
+import com.baeldung.um.persistence.setup.MyApplicationContextInitializer;
 
 @SpringBootApplication
 public class UmApp {

@@ -1,9 +1,9 @@
 package com.baeldung.lss.validation;
 
-import com.baeldung.lss.model.User;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import com.baeldung.lss.model.User;
 
 public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, Object> {
 

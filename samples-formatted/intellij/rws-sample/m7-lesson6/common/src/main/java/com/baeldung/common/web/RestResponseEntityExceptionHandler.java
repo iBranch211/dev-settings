@@ -1,11 +1,11 @@
 package com.baeldung.common.web;
 
-import com.baeldung.common.persistence.exception.MyEntityNotFoundException;
-import com.baeldung.common.web.exception.ApiError;
-import com.baeldung.common.web.exception.MyBadRequestException;
-import com.baeldung.common.web.exception.MyConflictException;
-import com.baeldung.common.web.exception.MyResourceNotFoundException;
-import com.baeldung.common.web.exception.ValidationErrorDTO;
+import java.nio.file.AccessDeniedException;
+import java.util.List;
+
+import javax.persistence.EntityNotFoundException;
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -23,10 +23,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.persistence.EntityNotFoundException;
-import javax.validation.ConstraintViolationException;
-import java.nio.file.AccessDeniedException;
-import java.util.List;
+import com.baeldung.common.persistence.exception.MyEntityNotFoundException;
+import com.baeldung.common.web.exception.ApiError;
+import com.baeldung.common.web.exception.MyBadRequestException;
+import com.baeldung.common.web.exception.MyConflictException;
+import com.baeldung.common.web.exception.MyResourceNotFoundException;
+import com.baeldung.common.web.exception.ValidationErrorDTO;
 
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {

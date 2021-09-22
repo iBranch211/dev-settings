@@ -1,6 +1,5 @@
 package com.baeldung.lsso;
 
-import com.baeldung.lsso.config.KeycloakServerProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +10,8 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
+
+import com.baeldung.lsso.config.KeycloakServerProperties;
 
 @SpringBootApplication(exclude = LiquibaseAutoConfiguration.class)
 @EnableConfigurationProperties({ KeycloakServerProperties.class })

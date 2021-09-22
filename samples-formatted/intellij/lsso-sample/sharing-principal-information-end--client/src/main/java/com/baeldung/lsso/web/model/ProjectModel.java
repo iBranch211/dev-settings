@@ -1,9 +1,9 @@
 package com.baeldung.lsso.web.model;
 
+import java.time.LocalDate;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
-
-import java.time.LocalDate;
 
 public class ProjectModel {
     private Long id;

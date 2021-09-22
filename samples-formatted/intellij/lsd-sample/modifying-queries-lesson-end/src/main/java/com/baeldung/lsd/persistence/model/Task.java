@@ -1,14 +1,15 @@
 package com.baeldung.lsd.persistence.model;
 
+import java.time.LocalDate;
+import java.util.Objects;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import java.time.LocalDate;
-import java.util.Objects;
-import java.util.UUID;
 
 @Entity
 public class Task {

@@ -1,11 +1,11 @@
 package com.baeldung.common.web.controller;
 
-import com.baeldung.common.interfaces.IDto;
-import com.baeldung.common.persistence.model.IEntity;
-import com.baeldung.common.persistence.service.IRawService;
-import com.baeldung.common.web.RestPreconditions;
-import com.baeldung.common.web.exception.MyResourceNotFoundException;
-import com.baeldung.um.persistence.model.Privilege;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
+import com.baeldung.common.interfaces.IDto;
+import com.baeldung.common.persistence.model.IEntity;
+import com.baeldung.common.persistence.service.IRawService;
+import com.baeldung.common.web.RestPreconditions;
+import com.baeldung.common.web.exception.MyResourceNotFoundException;
+import com.baeldung.um.persistence.model.Privilege;
 
 public abstract class AbstractReadOnlyController<D extends IDto, E extends IEntity> {
     protected final Logger logger = LoggerFactory.getLogger(getClass());

@@ -1,8 +1,8 @@
 package com.baeldung.lsso.service;
 
-import com.baeldung.lsso.persistence.model.Project;
-
 import java.util.Optional;
+
+import com.baeldung.lsso.persistence.model.Project;
 
 public interface IProjectService {
     Optional<Project> findById(Long id);

@@ -1,15 +1,16 @@
 package com.baeldung.lss.service;
 
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import com.baeldung.lss.model.PasswordResetToken;
 import com.baeldung.lss.model.User;
 import com.baeldung.lss.persistence.PasswordResetTokenRepository;
 import com.baeldung.lss.persistence.UserRepository;
 import com.baeldung.lss.validation.EmailExistsException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 
 @Service
 @Transactional

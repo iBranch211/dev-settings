@@ -1,11 +1,12 @@
 package com.baeldung.ls.service.impl;
 
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.baeldung.ls.persistence.model.Task;
 import com.baeldung.ls.persistence.repository.ITaskRepository;
 import com.baeldung.ls.service.ITaskService;
-import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class TaskServiceImpl implements ITaskService {

@@ -1,10 +1,11 @@
 package com.baeldung.lsso;
 
-import io.restassured.RestAssured;
+import static org.hamcrest.Matchers.greaterThan;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
-import static org.hamcrest.Matchers.greaterThan;
+import io.restassured.RestAssured;
 
 /**
  * This Live Test requires:

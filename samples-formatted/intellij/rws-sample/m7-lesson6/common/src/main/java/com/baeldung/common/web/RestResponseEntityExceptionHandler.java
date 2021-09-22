@@ -131,10 +131,8 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     private ApiError message(final HttpStatus httpStatus, final Exception ex) {
-        final String message = ex.getMessage() == null ?
-            ex.getClass()
-                .getSimpleName() :
-            ex.getMessage();
+        final String message = ex.getMessage() == null ? ex.getClass()
+            .getSimpleName() : ex.getMessage();
         final String devMessage = ex.getClass()
             .getSimpleName();
         // devMessage = ExceptionUtils.getStackTrace(ex);

@@ -14,13 +14,23 @@ public class AddCustomHeadersGlobalFilter implements GlobalFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        return exchange.getPrincipal().filter(Authentication.class::isInstance).cast(Authentication.class).map(authentication -> addHeaders(exchange, authentication)).flatMap(chain::filter);
+        return exchange.getPrincipal()
+          .filter(Authentication.class::isInstance)
+          .cast(Authentication.class)
+          .map(authentication -> addHeaders(exchange, authentication))
+          .flatMap(chain::filter);
 
     }
 
     private ServerWebExchange addHeaders(ServerWebExchange exchange, Authentication authentication) {
-        String[] authorities = authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).toArray(String[]::new);
-        exchange.getRequest().mutate().header("BAEL-authorities", authorities).header("BAEL-username", authentication.getName());
+        String[] authorities = authentication.getAuthorities()
+          .stream()
+          .map(GrantedAuthority::getAuthority)
+          .toArray(String[]::new);
+        exchange.getRequest()
+          .mutate()
+          .header("BAEL-authorities", authorities)
+          .header("BAEL-username", authentication.getName());
         return exchange;
     }
 

@@ -27,14 +27,22 @@ public class ProjectResourceServerIntegrationTest {
 
     @Test
     public void givenRequestWithPreAuthHeaders_whenRequestProjectsEndpoint_thenOk() throws Exception {
-        this.mvc.perform(get(PROJECT_SVC_ENDPOINT_URL).header("BAEL-username", "customUsername").header("BAEL-authorities", "SCOPE_read").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(jsonPath("$.size()", Matchers.greaterThan(0)));
+        this.mvc.perform(get(PROJECT_SVC_ENDPOINT_URL).header("BAEL-username", "customUsername")
+            .header("BAEL-authorities", "SCOPE_read")
+            .accept(MediaType.APPLICATION_JSON))
+          .andExpect(status().isOk())
+          .andExpect(jsonPath("$.size()", Matchers.greaterThan(0)));
     }
 
     @Test
     public void givenRequestWithPreAuthHeaders_whenPostProject_thenCreated() throws Exception {
         String newProject = "{ \"name\": \"newProject\" }";
 
-        this.mvc.perform(post(PROJECT_SVC_ENDPOINT_URL).header("BAEL-username", "customUsername").header("BAEL-authorities", "SCOPE_write").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).content(newProject))
+        this.mvc.perform(post(PROJECT_SVC_ENDPOINT_URL).header("BAEL-username", "customUsername")
+            .header("BAEL-authorities", "SCOPE_write")
+            .accept(MediaType.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(newProject))
           .andExpect(status().isCreated());
     }
 
@@ -42,23 +50,32 @@ public class ProjectResourceServerIntegrationTest {
     public void givenRequestWithInvalidAuthoritiesPreAuthHeader_whenPostProject_thenForbidden() throws Exception {
         String newProject = "{ \"name\": \"newProject\" }";
 
-        this.mvc.perform(post(PROJECT_SVC_ENDPOINT_URL).header("BAEL-username", "customUsername").header("BAEL-authorities", "SCOPE_read").accept(MediaType.APPLICATION_JSON).content(newProject)).andExpect(status().isForbidden());
+        this.mvc.perform(post(PROJECT_SVC_ENDPOINT_URL).header("BAEL-username", "customUsername")
+            .header("BAEL-authorities", "SCOPE_read")
+            .accept(MediaType.APPLICATION_JSON)
+            .content(newProject))
+          .andExpect(status().isForbidden());
     }
 
     @Test
     public void givenJustUsernameHeaders_whenRequestProjectsEndpoint_thenForbidden() throws Exception {
-        this.mvc.perform(get(PROJECT_SVC_ENDPOINT_URL).header("BAEL-username", "customUsername").accept(MediaType.APPLICATION_JSON)).andExpect(status().isForbidden());
+        this.mvc.perform(get(PROJECT_SVC_ENDPOINT_URL).header("BAEL-username", "customUsername")
+            .accept(MediaType.APPLICATION_JSON))
+          .andExpect(status().isForbidden());
     }
 
     @Test
     public void givenJustUsernameHeaders_whenRequestNonExistingEndpoint_thenNotFound() throws Exception {
-        this.mvc.perform(get("/other").header("BAEL-username", "customUsername").accept(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound());
+        this.mvc.perform(get("/other").header("BAEL-username", "customUsername")
+            .accept(MediaType.APPLICATION_JSON))
+          .andExpect(status().isNotFound());
     }
 
     @Test
     public void givenNoHeaders_whenRequestProjectsEndpoint_thenPreAuthCredentialsNotFoundException() throws Exception {
         assertThrows(PreAuthenticatedCredentialsNotFoundException.class, () -> {
-            this.mvc.perform(get(PROJECT_SVC_ENDPOINT_URL).accept(MediaType.APPLICATION_JSON)).andReturn();
+            this.mvc.perform(get(PROJECT_SVC_ENDPOINT_URL).accept(MediaType.APPLICATION_JSON))
+              .andReturn();
         });
     }
 }

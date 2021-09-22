@@ -32,12 +32,15 @@ public class Lss5IntegrationTest {
 
     @Before
     public void setup() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(context).addFilters(springSecurityFilterChain).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(context)
+          .addFilters(springSecurityFilterChain)
+          .build();
     }
 
     @Test
     public void testUserLoginSuccess() throws Exception {
-        ResultActions resultActions = mockMvc.perform(formLogin("/doLogin").user("test@email.com").password("pass"));
+        ResultActions resultActions = mockMvc.perform(formLogin("/doLogin").user("test@email.com")
+          .password("pass"));
         resultActions.andExpect(authenticated());
     }
 

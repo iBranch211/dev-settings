@@ -27,7 +27,9 @@ public class ClientSecurityConfig extends WebSecurityConfigurerAdapter {
     WebClient webClient(ClientRegistrationRepository clientRegistrationRepository, OAuth2AuthorizedClientRepository authorizedClientRepository) {
         ServletOAuth2AuthorizedClientExchangeFilterFunction oauth2 = new ServletOAuth2AuthorizedClientExchangeFilterFunction(clientRegistrationRepository, authorizedClientRepository);
         oauth2.setDefaultOAuth2AuthorizedClient(true);
-        return WebClient.builder().apply(oauth2.oauth2Configuration()).build();
+        return WebClient.builder()
+          .apply(oauth2.oauth2Configuration())
+          .build();
     }
 
 }

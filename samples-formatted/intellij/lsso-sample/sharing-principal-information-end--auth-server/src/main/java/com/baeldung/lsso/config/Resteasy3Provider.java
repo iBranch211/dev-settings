@@ -8,22 +8,28 @@ public class Resteasy3Provider implements ResteasyProvider {
 
     @Override
     public <R> R getContextData(Class<R> type) {
-        return ResteasyProviderFactory.getInstance().getContextData(type);
+        return ResteasyProviderFactory.getInstance()
+          .getContextData(type);
     }
 
     @Override
     public void pushDefaultContextObject(Class type, Object instance) {
-        ResteasyProviderFactory.getInstance().getContextData(Dispatcher.class).getDefaultContextObjects().put(type, instance);
+        ResteasyProviderFactory.getInstance()
+          .getContextData(Dispatcher.class)
+          .getDefaultContextObjects()
+          .put(type, instance);
     }
 
     @Override
     public void pushContext(Class type, Object instance) {
-        ResteasyProviderFactory.getInstance().pushContext(type, instance);
+        ResteasyProviderFactory.getInstance()
+          .pushContext(type, instance);
     }
 
     @Override
     public void clearContextData() {
-        ResteasyProviderFactory.getInstance().clearContextData();
+        ResteasyProviderFactory.getInstance()
+          .clearContextData();
     }
 
 }

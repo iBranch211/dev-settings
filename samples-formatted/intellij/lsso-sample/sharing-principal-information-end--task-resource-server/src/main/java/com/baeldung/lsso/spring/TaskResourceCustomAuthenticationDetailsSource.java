@@ -18,7 +18,10 @@ public class TaskResourceCustomAuthenticationDetailsSource implements Authentica
     @Override
     public GrantedAuthoritiesContainer buildDetails(HttpServletRequest request) {
         Enumeration<String> headerValues = request.getHeaders("BAEL-authorities");
-        Collection<GrantedAuthority> authorities = Collections.list(headerValues).stream().map(value -> new SimpleGrantedAuthority(value)).collect(Collectors.toList());
+        Collection<GrantedAuthority> authorities = Collections.list(headerValues)
+          .stream()
+          .map(value -> new SimpleGrantedAuthority(value))
+          .collect(Collectors.toList());
         return new PreAuthenticatedGrantedAuthoritiesWebAuthenticationDetails(request, authorities);
     }
 

@@ -24,8 +24,12 @@ public class TaskClientController {
 
     @GetMapping("/tasks")
     public String getTasks(Model model, @RequestParam("projectId") String projectId) {
-        List<TaskModel> tasks = this.webClient.get().uri(taskApiUrl + "?projectId=" + projectId).retrieve().bodyToMono(new ParameterizedTypeReference<List<TaskModel>>() {
-        }).block();
+        List<TaskModel> tasks = this.webClient.get()
+          .uri(taskApiUrl + "?projectId=" + projectId)
+          .retrieve()
+          .bodyToMono(new ParameterizedTypeReference<List<TaskModel>>() {
+          })
+          .block();
         model.addAttribute("tasks", tasks);
         return "tasks";
     }

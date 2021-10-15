@@ -1,5 +1,6 @@
 package com.baeldung.lsso;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.mockJwt;
 
 import java.net.URI;
@@ -56,7 +57,7 @@ public class GatewayIntegrationTest {
             .addHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE));
 
         this.webTestClient.mutateWith(mockJwt().jwt(jwt -> jwt.claim("scope", "read write custom")
-                .subject("customSubjectId")))
+            .subject("customSubjectId")))
             .get()
             .uri(BASE_GATEWAY_URL_PATH + "/projects")
             .exchange()
@@ -90,7 +91,7 @@ public class GatewayIntegrationTest {
         String tasksQueryParamsSection = "?projectId=1";
 
         this.webTestClient.mutateWith(mockJwt().jwt(jwt -> jwt.claim("scope", "read write custom")
-                .subject("customSubjectId")))
+            .subject("customSubjectId")))
             .get()
             .uri(BASE_GATEWAY_URL_PATH + "/tasks" + tasksQueryParamsSection)
             .exchange()
@@ -115,7 +116,7 @@ public class GatewayIntegrationTest {
     @Test
     public void givenJwt_whenRequestUnmappedEndpoint_then404NotFound() throws Exception {
         this.webTestClient.mutateWith(mockJwt().jwt(jwt -> jwt.claim("scope", "read write custom")
-                .subject("customSubjectId")))
+            .subject("customSubjectId")))
             .get()
             .uri(BASE_GATEWAY_URL_PATH + "/other")
             .exchange()

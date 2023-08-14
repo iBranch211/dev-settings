@@ -10,11 +10,19 @@ public class DisjointSetInfo {
         setRank(1);
     }
 
-    public Integer getParentNode() { return parentNode; }
+    public Integer getParentNode() {
+        return parentNode;
+    }
 
-    public void setParentNode(Integer parentNode) { this.parentNode = parentNode; }
+    public void setParentNode(Integer parentNode) {
+        this.parentNode = parentNode;
+    }
 
-    public int getRank() { return rank; }
+    public int getRank() {
+        return rank;
+    }
 
-    public void setRank(int rank) { this.rank = rank; }
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
 }

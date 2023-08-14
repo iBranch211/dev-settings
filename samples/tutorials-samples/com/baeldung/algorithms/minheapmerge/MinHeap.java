@@ -45,7 +45,9 @@ public class MinHeap {
         return (2 * index + 2);
     }
 
-    HeapNode getRootNode() { return heapNodes[0]; }
+    HeapNode getRootNode() {
+        return heapNodes[0];
+    }
 
     void heapifyFromRoot() {
         heapify(0);

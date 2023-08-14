@@ -22,7 +22,8 @@ public class LinkedListReversal {
             return head;
         }
         ListNode node = reverseListRecursive(head.getNext());
-        head.getNext().setNext(head);
+        head.getNext()
+            .setNext(head);
         head.setNext(null);
         return node;
     }

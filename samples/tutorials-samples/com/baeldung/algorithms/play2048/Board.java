@@ -39,9 +39,13 @@ public class Board {
         }
     }
 
-    public int getSize() { return board.length; }
+    public int getSize() {
+        return board.length;
+    }
 
-    public int getScore() { return score; }
+    public int getScore() {
+        return score;
+    }
 
     public int getCell(Cell cell) {
         int x = cell.getX();

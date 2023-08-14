@@ -29,7 +29,8 @@ public class Play2048 {
             System.out.println("Computer move");
             System.out.println("=============");
             printBoard(board);
-        } while (!board.emptyCells().isEmpty());
+        } while (!board.emptyCells()
+            .isEmpty());
 
         System.out.println("Final Score: " + board.getScore());
 

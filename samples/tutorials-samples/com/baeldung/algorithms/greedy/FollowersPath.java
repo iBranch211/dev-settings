@@ -13,9 +13,13 @@ public class FollowersPath {
         this.accounts = new ArrayList<>();
     }
 
-    public List<Follower> getAccounts() { return accounts; }
+    public List<Follower> getAccounts() {
+        return accounts;
+    }
 
-    public long getCount() { return count; }
+    public long getCount() {
+        return count;
+    }
 
     public void addFollower(String username, long count) {
         accounts.add(new Follower(username, count));

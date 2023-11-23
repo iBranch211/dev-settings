@@ -23,6 +23,7 @@ import com.baeldung.common.web.exception.MyResourceNotFoundException;
 import com.baeldung.um.persistence.model.Privilege;
 
 public abstract class AbstractReadOnlyController<D extends IDto, E extends IEntity> {
+
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     protected Class<D> clazz;

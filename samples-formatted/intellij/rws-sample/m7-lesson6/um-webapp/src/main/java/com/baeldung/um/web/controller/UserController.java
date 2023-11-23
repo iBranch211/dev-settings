@@ -45,7 +45,8 @@ public class UserController extends AbstractController<User, User> implements IS
 
     @Override
     @GetMapping(params = { PAGE, SIZE, SORT_BY })
-    public List<User> findAllPaginatedAndSorted(@RequestParam(PAGE) int page, @RequestParam(SIZE) int size, @RequestParam(SORT_BY) String sortBy, @RequestParam(SORT_ORDER) String sortOrder) {
+    public List<User> findAllPaginatedAndSorted(@RequestParam(PAGE) int page, @RequestParam(SIZE) int size, @RequestParam(SORT_BY) String sortBy,
+        @RequestParam(SORT_ORDER) String sortOrder) {
         return findPaginatedAndSortedInternal(page, size, sortBy, sortOrder);
     }
 

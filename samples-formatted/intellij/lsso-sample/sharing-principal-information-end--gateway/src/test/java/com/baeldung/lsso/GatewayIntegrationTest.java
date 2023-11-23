@@ -77,7 +77,8 @@ public class GatewayIntegrationTest {
         String projectsPath = new URI(PROJECT_SVC_ENDPOINT_URL).getPath();
         assertThat(capturedProjectRequest.getPath()).isEqualTo(projectsPath);
         assertThat(capturedProjectRequest.getHeaders()
-            .toMultimap()).hasEntrySatisfying("BAEL-authorities", valueList -> valueList.containsAll(Arrays.asList("SCOPE_write", "SCOPE_read", "SCOPE_custom")));
+            .toMultimap()).hasEntrySatisfying("BAEL-authorities",
+            valueList -> valueList.containsAll(Arrays.asList("SCOPE_write", "SCOPE_read", "SCOPE_custom")));
         assertThat(capturedProjectRequest.getHeader("BAEL-username")).isEqualTo("customSubjectId");
     }
 
@@ -109,7 +110,8 @@ public class GatewayIntegrationTest {
         URI tasksPath = new URI(TASK_SVC_ENDPOINT_URL + tasksQueryParamsSection);
         assertThat(capturedTaskRequest.getPath()).isEqualTo(tasksPath.getPath() + "?" + tasksPath.getQuery());
         assertThat(capturedTaskRequest.getHeaders()
-            .toMultimap()).hasEntrySatisfying("BAEL-authorities", valueList -> valueList.containsAll(Arrays.asList("SCOPE_write", "SCOPE_read", "SCOPE_custom")));
+            .toMultimap()).hasEntrySatisfying("BAEL-authorities",
+            valueList -> valueList.containsAll(Arrays.asList("SCOPE_write", "SCOPE_read", "SCOPE_custom")));
         assertThat(capturedTaskRequest.getHeader("BAEL-username")).isEqualTo("customSubjectId");
     }
 

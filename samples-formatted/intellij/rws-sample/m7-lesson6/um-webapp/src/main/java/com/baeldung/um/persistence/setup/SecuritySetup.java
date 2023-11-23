@@ -30,6 +30,7 @@ import com.google.common.collect.Sets;
 @Component
 @Profile(Profiles.DEPLOYED)
 public class SecuritySetup implements ApplicationListener<ContextRefreshedEvent> {
+
     private final Logger logger = LoggerFactory.getLogger(SecuritySetup.class);
 
     private boolean setupDone;
@@ -106,7 +107,8 @@ public class SecuritySetup implements ApplicationListener<ContextRefreshedEvent>
         Objects.requireNonNull(canUserRead, "canUserRead is null");
         Objects.requireNonNull(canUserWrite, "canUserWrite is null");
 
-        createRoleIfNotExisting(Roles.ROLE_ADMIN, Sets.<Privilege>newHashSet(canUserRead, canUserWrite, canRoleRead, canRoleWrite, canPrivilegeRead, canPrivilegeWrite));
+        createRoleIfNotExisting(Roles.ROLE_ADMIN,
+            Sets.<Privilege> newHashSet(canUserRead, canUserWrite, canRoleRead, canRoleWrite, canPrivilegeRead, canPrivilegeWrite));
     }
 
     final void createRoleIfNotExisting(final String name, final Set<Privilege> privileges) {
@@ -124,7 +126,7 @@ public class SecuritySetup implements ApplicationListener<ContextRefreshedEvent>
         final Role roleAdmin = roleService.findByName(Roles.ROLE_ADMIN);
 
         // createUserIfNotExisting(SecurityConstants.ADMIN_USERNAME, SecurityConstants.ADMIN_PASS, Sets.<Role> newHashSet(roleAdmin));
-        createUserIfNotExisting(Um.ADMIN_EMAIL, Um.ADMIN_PASS, Sets.<Role>newHashSet(roleAdmin));
+        createUserIfNotExisting(Um.ADMIN_EMAIL, Um.ADMIN_PASS, Sets.<Role> newHashSet(roleAdmin));
     }
 
     final void createUserIfNotExisting(final String loginName, final String pass, final Set<Role> roles) {

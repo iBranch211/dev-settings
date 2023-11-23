@@ -1,6 +1,6 @@
-server:
+server: 
   port: 8084
-  servlet:
+  servlet: 
     context-path: /lsso-gateway
 
 ####### resource server configuration properties
@@ -8,18 +8,18 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: projects_route
-          uri: http://localhost:8081
-          predicates:
-            - Path=/lsso-gateway/projects/**
-          filters:
-            - RewritePath=/lsso-gateway/(?<segment>.*), /lsso-project-resource-server/api/$\{segment}
-        - id: tasks_route
-          uri: http://localhost:8085
-          predicates:
-            - Path=/lsso-gateway/tasks/**
-          filters:
-            - RewritePath=/lsso-gateway/(?<segment>.*), /lsso-task-resource-server/api/$\{segment}
+      - id: projects_route
+        uri: http://localhost:8081
+        predicates:
+        - Path=/lsso-gateway/projects/**
+        filters:
+        - RewritePath=/lsso-gateway/(?<segment>.*), /lsso-project-resource-server/api/$\{segment}
+      - id: tasks_route
+        uri: http://localhost:8085
+        predicates:
+        - Path=/lsso-gateway/tasks/**
+        filters:
+        - RewritePath=/lsso-gateway/(?<segment>.*), /lsso-task-resource-server/api/$\{segment}
   security:
     oauth2:
       resourceserver:

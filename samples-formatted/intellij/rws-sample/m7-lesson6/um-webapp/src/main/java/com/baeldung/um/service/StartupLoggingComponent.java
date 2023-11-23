@@ -13,6 +13,7 @@ import com.google.common.collect.Lists;
 
 @Component
 public class StartupLoggingComponent implements InitializingBean {
+
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private static final String ENV_TARGET_KEY = "envTarget";
@@ -62,7 +63,8 @@ public class StartupLoggingComponent implements InitializingBean {
 
     //
 
-    private final String getValueOfProperty(final Environment environment, final String propertyKey, final String propertyDefaultValue, final List<String> acceptablePropertyValues) {
+    private final String getValueOfProperty(final Environment environment, final String propertyKey, final String propertyDefaultValue,
+        final List<String> acceptablePropertyValues) {
         String propValue = environment.getProperty(propertyKey);
         if (propValue == null) {
             propValue = propertyDefaultValue;

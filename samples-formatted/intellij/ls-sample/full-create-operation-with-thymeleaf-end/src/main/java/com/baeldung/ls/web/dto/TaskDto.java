@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.baeldung.ls.persistence.model.TaskStatus;
 
 public class TaskDto {
+
     private Long id;
 
     private String name;

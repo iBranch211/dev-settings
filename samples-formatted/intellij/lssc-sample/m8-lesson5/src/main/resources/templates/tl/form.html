@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html layout:decorate="~{layout}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
-    <title>Users : Create</title>
+<title>Users : Create</title>
 </head>
 <body>
-<h1 layout:fragment="header">Users : Create</h1>
-<div class="container" layout:fragment="content">
-    <form action="#" id="userForm" method="post" th:action="@{/user/(form)}" th:object="${user}">
-        <div class="alert alert-error" th:if="${#fields.hasErrors('*')}">
-            <p th:each="error : ${#fields.errors('*')}" th:text="${error}">Validation error</p>
-        </div>
-        <div class="pull-right">
-            <a href="users.html" th:href="@{/user/}"> Users </a>
-        </div>
-        <input th:class="${#fields.hasErrors('id')} ? 'field-error'" th:field="*{id}" type="hidden"/>
+    <h1 layout:fragment="header">Users : Create</h1>
+    <div layout:fragment="content" class="container">
+        <form id="userForm" th:action="@{/user/(form)}" th:object="${user}" action="#" method="post">
+            <div th:if="${#fields.hasErrors('*')}" class="alert alert-error">
+                <p th:each="error : ${#fields.errors('*')}" th:text="${error}">Validation error</p>
+            </div>
+            <div class="pull-right">
+                <a th:href="@{/user/}" href="users.html"> Users </a>
+            </div>
+            <input type="hidden" th:field="*{id}" th:class="${#fields.hasErrors('id')} ? 'field-error'" />
 
-        <label for="email">Email</label>
-        <input th:class="${#fields.hasErrors('email')} ? 'field-error'" th:field="*{email}" type="email"/>
-        <label for="password">Password</label>
-        <input th:class="${#fields.hasErrors('password')} ? 'field-error'" th:field="*{password}" type="password"/>
-        <label for="passwordConfirmation">Password Confirmation</label>
-        <input th:class="${#fields.hasErrors('passwordConfirmation')} ? 'field-error'" th:field="*{passwordConfirmation}" type="password"/>
-        <div class="form-actions">
-            <input type="submit" value="Save"/>
-        </div>
-    </form>
-</div>
+            <label for="email">Email</label>
+            <input type="email" th:field="*{email}" th:class="${#fields.hasErrors('email')} ? 'field-error'" />
+            <label for="password">Password</label>
+            <input type="password" th:field="*{password}" th:class="${#fields.hasErrors('password')} ? 'field-error'" />
+            <label for="passwordConfirmation">Password Confirmation</label>
+            <input type="password" th:field="*{passwordConfirmation}" th:class="${#fields.hasErrors('passwordConfirmation')} ? 'field-error'" />
+            <div class="form-actions">
+                <input type="submit" value="Save" />
+            </div>
+        </form>
+    </div>
 </body>
 </html>

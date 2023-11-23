@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.ConstraintViolationException;
 
+import com.baeldung.common.web.exception.*;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -24,11 +26,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.baeldung.common.persistence.exception.MyEntityNotFoundException;
-import com.baeldung.common.web.exception.ApiError;
-import com.baeldung.common.web.exception.MyBadRequestException;
-import com.baeldung.common.web.exception.MyConflictException;
-import com.baeldung.common.web.exception.MyResourceNotFoundException;
-import com.baeldung.common.web.exception.ValidationErrorDTO;
 
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
@@ -36,7 +33,8 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     // 400
 
     @Override
-    protected final ResponseEntity<Object> handleHttpMessageNotReadable(final HttpMessageNotReadableException ex, final HttpHeaders headers, final HttpStatus status, final WebRequest request) {
+    protected final ResponseEntity<Object> handleHttpMessageNotReadable(final HttpMessageNotReadableException ex, final HttpHeaders headers,
+        final HttpStatus status, final WebRequest request) {
         logger.info("Bad Request: " + ex.getMessage());
         logger.debug("Bad Request: ", ex);
 
@@ -45,7 +43,8 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     @Override
-    protected final ResponseEntity<Object> handleMethodArgumentNotValid(final MethodArgumentNotValidException ex, final HttpHeaders headers, final HttpStatus status, final WebRequest request) {
+    protected final ResponseEntity<Object> handleMethodArgumentNotValid(final MethodArgumentNotValidException ex, final HttpHeaders headers,
+        final HttpStatus status, final WebRequest request) {
         logger.info("Bad Request: " + ex.getMessage());
         logger.debug("Bad Request: ", ex);
 

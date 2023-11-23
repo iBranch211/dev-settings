@@ -1,6 +1,7 @@
 package com.baeldung.um.persistence.model;
 
-import java.util.Set;
+import com.baeldung.common.interfaces.INameableDto;
+import com.baeldung.common.persistence.model.INameableEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,8 +15,7 @@ import javax.persistence.ManyToMany;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.baeldung.common.interfaces.INameableDto;
-import com.baeldung.common.persistence.model.INameableEntity;
+import java.util.Set;
 
 @Entity
 public class Role implements INameableEntity, INameableDto {
@@ -90,17 +90,21 @@ public class Role implements INameableEntity, INameableDto {
 
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         final Role other = (Role) obj;
         if (name == null) {
             return other.name == null;
-        } else
+        } else {
             return name.equals(other.name);
+        }
     }
 
     @Override

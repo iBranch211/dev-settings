@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Task {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -112,7 +113,8 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task [id=" + id + ", name=" + name + ", description=" + description + ", dueDate=" + dueDate + ", status=" + status + ", project=" + project + ", assignee=" + assignee + "]";
+        return "Task [id=" + id + ", name=" + name + ", description=" + description + ", dueDate=" + dueDate + ", status=" + status + ", project=" + project +
+            ", assignee=" + assignee + "]";
     }
 
     @Override
@@ -122,18 +124,23 @@ public class Task {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Task other = (Task) obj;
         if (uuid == null) {
-            if (other.uuid != null)
+            if (other.uuid != null) {
                 return false;
-        } else if (!uuid.equals(other.uuid))
+            }
+        } else if (!uuid.equals(other.uuid)) {
             return false;
+        }
         return true;
     }
 

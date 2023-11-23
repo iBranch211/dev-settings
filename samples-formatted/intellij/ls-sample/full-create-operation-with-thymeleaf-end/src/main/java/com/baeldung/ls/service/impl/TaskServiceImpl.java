@@ -10,6 +10,7 @@ import com.baeldung.ls.service.ITaskService;
 
 @Service
 public class TaskServiceImpl implements ITaskService {
+
     private ITaskRepository taskRepository;
 
     public TaskServiceImpl(ITaskRepository taskRepository) {

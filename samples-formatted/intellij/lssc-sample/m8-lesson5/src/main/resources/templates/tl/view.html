@@ -1,23 +1,23 @@
-<html layout:decorate="~{layout}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
-    <title>Users : View</title>
+<title>Users : View</title>
 </head>
 <body>
-<h1 layout:fragment="header">Users : Create</h1>
-<div class="container" layout:fragment="content">
-    <div class="alert alert-success" th:if="${globalMessage}" th:text="${globalMessage}">Some Success message</div>
-    <div class="pull-right">
-        <a href="list.html" th:href="@{/user/}"> Users </a>
+    <h1 layout:fragment="header">Users : Create</h1>
+    <div layout:fragment="content" class="container">
+        <div class="alert alert-success" th:if="${globalMessage}" th:text="${globalMessage}">Some Success message</div>
+        <div class="pull-right">
+            <a th:href="@{/user/}" href="list.html"> Users </a>
+        </div>
+        <dl>
+            <dt>ID</dt>
+            <dd id="id" th:text="${user.id}">123</dd>
+            <dt>Email</dt>
+            <dd id="email" th:text="${user.email}">Email</dd>
+        </dl>
+        <div class="pull-left">
+            <a href="users" th:href="@{'/user/delete/' + ${user.id}}"> delete </a> | <a href="form.html" th:href="@{'/user/modify/' + ${user.id}}"> modify </a>
+        </div>
     </div>
-    <dl>
-        <dt>ID</dt>
-        <dd id="id" th:text="${user.id}">123</dd>
-        <dt>Email</dt>
-        <dd id="email" th:text="${user.email}">Email</dd>
-    </dl>
-    <div class="pull-left">
-        <a href="users" th:href="@{'/user/delete/' + ${user.id}}"> delete </a> | <a href="form.html" th:href="@{'/user/modify/' + ${user.id}}"> modify </a>
-    </div>
-</div>
 </body>
 </html>

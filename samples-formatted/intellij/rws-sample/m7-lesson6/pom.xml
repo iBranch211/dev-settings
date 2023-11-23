@@ -1,4 +1,4 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <description>REST with Spring Classes Module7-Lesson6</description>
     <name>user-management-parent-l6</name>
@@ -12,7 +12,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
     <licenses>
@@ -96,12 +96,12 @@
 
         <!-- commons and utils -->
         <guava.version>27.0-jre</guava.version>
-
+        
         <modelmapper.version>2.3.2</modelmapper.version>
 
         <!-- maven plugins -->
         <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
-
+        
         <rest-assured.version>4.3.3</rest-assured.version>
         <groovy.version>3.0.6</groovy.version>
 

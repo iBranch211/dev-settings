@@ -1,7 +1,8 @@
 package com.baeldung.common.persistence.service;
 
-import java.util.List;
-import java.util.Objects;
+import com.baeldung.common.persistence.exception.MyEntityNotFoundException;
+import com.baeldung.common.persistence.model.IEntity;
+import com.google.common.collect.Lists;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,12 +16,12 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.common.persistence.exception.MyEntityNotFoundException;
-import com.baeldung.common.persistence.model.IEntity;
-import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
 
 @Transactional
 public abstract class AbstractRawService<T extends IEntity> implements IRawService<T> {
+
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired

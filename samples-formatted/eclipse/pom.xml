@@ -16,6 +16,7 @@
 		<module>lsd-sample</module>
 		<module>ls-sample</module>
 		<module>rws-sample</module>
+		<module>tutorials-samples</module>
     </modules>
 
 </project>
